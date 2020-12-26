@@ -1,4 +1,4 @@
-# consensys-bootcamp-2020-fractional-water-allocation
+# consensys-bootcamp-2020-fractional-water-allocation-protocol
 
 Fractional water allocation contract
 -----------------------------------------------------
