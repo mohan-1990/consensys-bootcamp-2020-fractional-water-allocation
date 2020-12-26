@@ -12,8 +12,12 @@ Project background:-
 
 The project work is based on this youtube video https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
 
-Problem scenario:- Conflict among a group of neighbouring countries on sharing water from a reservoir
-Possible solution:- Fractional water allocation and reservoir capacity sharing concepts (For reference take a look at this paper:- https://www.sciencedirect.com/science/article/pii/S1474706507001222)
+Problem scenario:-
+-----------------------------------------------------
+Conflict among a group of neighbouring countries on sharing water from a reservoir
+Possible solution:-
+-----------------------------------------------------
+Fractional water allocation and reservoir capacity sharing concepts (For reference take a look at this paper:- https://www.sciencedirect.com/science/article/pii/S1474706507001222)
 
 Project Scope:-
 -----------------------------------------------------
@@ -24,9 +28,9 @@ The scope is only limited to simulation of water allocation proposal and voting 
 Main Actors:-
 -----------------------------------------------------
 
-1) Beneficiaries - A countries or a states that has rights to utilize the reservoir water
-2) Mediator - A recongnized organization that could facilitate talks among the nations and propose water allocation percentage
-3) Observer - A recognized organization that attests the allocation protocol. Additionally the observer can attest the changes in the reservoir water level.
+1) Beneficiaries - A countries, states or cities that have rights to utilize the reservoir water
+2) Mediator - A recongnized organization that could facilitate talks among the beneficiaries and propose water allocation plan
+3) Observer - A recognized organization that attests the allocation plan. Additionally the observer can attest the changes in the reservoir water level.
 4) Admin - An IT organization that helps initialize the contract on ethereum blockchain
 5) Public - Anyone with an ethereum address can view the allocation plan, proposal and reservoir water level.
 
@@ -41,7 +45,14 @@ Steps in Protocol:-
 
 Project Strech:-
 -----------------------------------------------------
-The reference paper (https://www.sciencedirect.com/science/article/pii/S1474706507001222) talks about protocol to trade surplus water. 
+
+1) Feature improvements to Fractional Water Allocation Protocol:-
+
+The current version retrieve only the latest reservoir water level, allocation proposals and allocation plans. I wish to imrpove the contract to retrieve the full history and display as an interactive histogram on the app interface.
+
+2) Surplus Water Trade Protocol Implementation:-
+
+The reference paper (https://www.sciencedirect.com/science/article/pii/S1474706507001222) also talks about protocol to trade surplus water. 
 For example, one beneficiary wishes to trade water from their allocated capacity to some other beneficiary for a specified amount of time.
 I think ERC20 token is a possible candidate to implement this protocol. But due to limited time availability I wish to keep this idea for future implementation.
 
@@ -51,11 +62,12 @@ Steps to run the project:-
 -----------------------------------------------------
 
 1) Install Ganache - https://www.trufflesuite.com/ganache
-2) Install nodejs - https://nodejs.org/en/download/
-3) cd app_server
-4) npm install
-5) npm start
-6) Open http://localhost:3000/welcome
+2) Start Ganache
+3) Install nodejs - https://nodejs.org/en/download/
+4) cd app_server
+5) npm install
+6) npm start
+7) Open http://localhost:3000/welcome
 
 
 
