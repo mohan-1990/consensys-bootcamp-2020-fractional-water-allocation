@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=-76dmkNzT8E&feature=youtu.be
 Project background:-
 -----------------------------------------------------
 
-The project work is based on this youtube video https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
+The project work is based on this educational youtube video https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
 
 Problem scenario:-
 -----------------------------------------------------
