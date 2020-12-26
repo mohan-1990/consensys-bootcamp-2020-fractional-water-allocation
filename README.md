@@ -24,11 +24,11 @@ Main Actors:-
 
 Protocol:-
 
-Step 1) Admin fills in details of beneficiaries, mediator, observer and other reservoir details and initialize the contract on ethereum blockchain
-Step 2) Mediator proposes an allocation percentage for each beneficiary and sets the voting window
-Step 3) During the voting window, the beneficiaries can retrieve the allocation plan and vote if they agree to the proposal
+Step 1) Admin fills in details of beneficiaries, mediator, observer and other reservoir details and initialize the contract on ethereum blockchain.
+Step 2) Mediator proposes an allocation percentage for each beneficiary and sets the voting window.
+Step 3) During the voting window, the beneficiaries can retrieve the allocation plan and vote if they agree to the proposal.
 Step 4) After the voting window, the mediator needs to conclude the voting. If all beneficiaries voted the new allocation plan is adopted.
-Step 5) If not all beneficiaries voted in favour of the allocation plan, the protocol begins from Step 2
+Step 5) If not all beneficiaries voted in favour of the allocation plan, the protocol begins from Step 2.
 
 Project Strech:-
 The reference paper (https://www.sciencedirect.com/science/article/pii/S1474706507001222) talks about protocol to trade surplus water. 
