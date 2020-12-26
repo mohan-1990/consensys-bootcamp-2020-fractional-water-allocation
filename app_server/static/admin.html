@@ -1,0 +1,98 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fractional Water Allocation Protocol and Reservoir Operations Demo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <section>
+      <p>Welcome admin!</p>
+      <br/>
+      <a href="/welcome">Logout</a>
+    </section>
+    <br/>
+    <br/>
+    <form id="newFWACForm">
+        <p>Please enter the following details to initialize contract</p>
+        <br/>
+        <p>Beneficiary 1</p>
+        <input type="text" name="beneficiaries" id="beneficiary1" />
+        <br/>
+        <p>Beneficiary 2</p>
+        <input type="text" name="beneficiaries" id="beneficiary2" />
+        <br/>
+        <p>Beneficiary 3</p>
+        <input type="text" name="beneficiaries" id="beneficiary3" />
+        <br/>
+        <p>Mediated By</p>
+        <input type="text" id="mediatedBy" />
+        <br/>
+        <p>Observed By</p>
+        <input type="text" id="observedBy" />
+        <p>Reservoir Capacity Unit</p>
+        <input type="text" id="reservoirCapacityUnit" />
+        <p>Reservoir Capacity</p>
+        <input type="number" id="reservoirCapacity" />
+        <br/>
+        <br/>
+        <input type="button" id="submitBtn" value="Initialize Contract"/>
+    </form>
+
+    <p id="msg"></p>
+
+    <script> 
+      $(document).ready(function() {
+        $("#welcomeMsg").html("Welcome " + readCookie('usrName') + " (" + readCookie('addr') + " )");
+        $("#submitBtn").click(function() {
+
+            let beneficiaries = [$("#beneficiary1").val(), $("#beneficiary2").val(), $("#beneficiary3").val()];
+            let mediatedBy = $("#mediatedBy").val();
+            let observedBy = $("#observedBy").val();
+            let reservoirCapacityUnit = $("#reservoirCapacityUnit").val();
+            let reservoirCapacity = $("#reservoirCapacity").val();
+
+            console.log("beneficiaries: " + beneficiaries);
+            console.log("mediatedBy: " + mediatedBy);
+            console.log("observedBy: " + observedBy);
+            console.log("reservoirCapacityUnit: " + reservoirCapacityUnit);
+            console.log("reservoirCapacity: " + reservoirCapacity);
+
+            $.ajax({
+              url: "/initfwac",
+              type: "POST",
+              data: {
+                "beneficiaries": beneficiaries,
+                "mediatedBy": mediatedBy,
+                "observedBy": observedBy,
+                "reservoirCapacityUnit": reservoirCapacityUnit, 
+                "reservoirCapacity": reservoirCapacity
+              }
+            }).done(function(response) {
+              console.log(response);
+              if(response === true) {
+                $("#msg").empty().append("Contract initialized successfully with the above mentioned details. The end users may begin interactions now.");
+              }
+            });                            
+          });
+      });  
+      
+      function readCookie(name) {
+          let nameEQ = name + "=";
+          let ca = document.cookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+          }
+          return null;
+        }
+      </script>
+
+</body>
+
+</html>

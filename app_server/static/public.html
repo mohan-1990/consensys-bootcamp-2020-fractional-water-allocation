@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fractional Water Allocation Protocol and Reservoir Operations Demo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <section>
+      <p id="welcomeMsg">Welcome admin!</p>
+      <br/>
+      <a href="/welcome">Logout</a>
+    </section>
+    <br/>
+    <br/>        
+        
+
+    <input type="button" id="retrieveCurrentAllocationBtn" value="Retrieve current allocation plan"/>
+    <br/>
+    <br/>
+
+    <div id="allocationPlanDetails">
+
+    </div>    
+        
+    <input type="button" id="retrieveAllocationProposalBtn" value="Retrieve allocation proposal"/>
+    <br/>
+    <br/>
+    
+    <div id="allocationProposalDetails">
+
+    </div>
+
+    <input type="button" id="reservoirLevelDetailsBtn" value="Retrieve current reservoir level"/>
+    <br/>
+    <br/>
+
+    <div id="reservoirLevelDetails">
+    </div>
+      
+    <script> 
+      $(document).ready(function() {
+        $("#welcomeMsg").html("Welcome " + readCookie('usrName') + " (" + readCookie('addr') + " )");
+        $("#allocationProposalDetails").hide();        
+      });  
+      
+      $("#retrieveCurrentAllocationBtn").click(function() {
+        $.ajax({
+              url: "/retrieveallocationplan",
+              type: "POST",
+              data: {
+                "fromAccount": readCookie('addr')
+              }
+            }).done(function(response) {
+              console.log(JSON.stringify(response));
+              let displayHtml = '<table><tr><td>Allocation Version</td><td>' + response['version'] + '</td></tr>';
+              for(let i=0; i<response['beneficiaries'].length; ++i) {
+                displayHtml += '<tr><td>Beneficiary ' + parseInt(i + 1).toString() + ': ' + response['beneficiaries'][i] + 
+                  '</td><td>Allocation: ' + response['fractions'][i] + '</td></tr>';
+              }
+              displayHtml += '<tr><td>Proposed Time: ' + new Date(response['proposedTime'] * 1000).toLocaleString() + 
+                '</td><td>Allocation Time: ' + new Date(response['allocationTime'] * 1000).toLocaleString() + '</td></tr>';
+              displayHtml += '<tr><td>Observed by: ' + response['observedBy'] + 
+              '</td><td>Mediated by: ' + response['mediatedBy'] + '</td></tr></table>';
+
+              $("#allocationPlanDetails").html(displayHtml);
+              $("#allocationPlanDetails").show();
+            });                            
+        });        
+
+        $("#retrieveAllocationProposalBtn").click(function() {
+        $.ajax({
+              url: "/retrieveallocationproposal",
+              type: "POST",
+              data: {
+                "fromAccount": readCookie('addr')
+              }
+            }).done(function(response) {
+              console.log(JSON.stringify(response));
+              let displayHtml = '<table><tr><td>Allocation Proposal Version</td><td>' + response['proposalVersion'] + '</td></tr>';
+              for(let i=0; i<response['beneficiaries'].length; ++i) {
+                displayHtml += '<tr><td>Beneficiary ' + parseInt(i + 1).toString() + ': ' + response['beneficiaries'][i] + 
+                  '</td><td>Allocation: ' + response['fractions'][i] + '</td><td> Voted: ' + response['votes'][i] + '</td></tr>';
+              }
+              displayHtml += '<tr><td>Mediated By: ' + response['mediatedBy'] + 
+              '</td><td>Observed By: ' +response['observedBy'] + '</td></tr>';
+
+              displayHtml += '<tr><td>Voting Start Time: ' + new Date(response['votingStartTime'] * 1000).toLocaleString() + 
+                '</td><td>Voting End Time: ' + new Date(response['votingEndTime'] * 1000).toLocaleString() + '</td></tr></table>';
+
+              $("#allocationProposalDetails").html(displayHtml);
+              $("#allocationProposalDetails").show();
+            });                            
+        });
+
+        $("#reservoirLevelDetailsBtn").click(function() {
+        $.post({
+              url: "/retrievereservoirlevel",
+              type: "POST",
+              data: {
+                "fromAccount": readCookie('addr')
+              }
+            }).done(function(response) {     
+              console.log(JSON.stringify(response));
+
+              let displayHtml = '<table><tr><td>Version: ' + response['version'] + '</td></tr>';   
+              displayHtml += '<tr><td>Water Level: ' + response['waterLevel'] + 
+              '</td></tr>';
+              displayHtml += '<tr><td>Observed By: ' + response['observedBy'] + 
+              '</td></tr>';
+              displayHtml += '<tr><td>Update Time: ' + new Date(response['observedTime'] * 1000) + 
+              '</td></tr></table>';
+              $("#reservoirLevelDetails").html(displayHtml);
+              $("#reservoirLevelDetails").show();
+              
+            });                            
+        });
+
+        function readCookie(name) {
+          let nameEQ = name + "=";
+          let ca = document.cookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+          }
+          return null;
+        }
+
+      </script>
+
+</body>
+
+</html>

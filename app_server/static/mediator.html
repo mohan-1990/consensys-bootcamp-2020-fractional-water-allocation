@@ -1,0 +1,236 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fractional Water Allocation Protocol and Reservoir Operations Demo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <section>
+      <p id="welcomeMsg">Welcome admin!</p>
+      <br/>
+      <a href="/welcome">Logout</a>
+    </section>
+    <br/>
+    <br/>    
+    <form id="newFWACForm">
+        <p>Please enter the following details to propose new allocation plan</p>
+        <br/>
+        <p>Beneficiary 1</p>
+        <input type="text" name="beneficiaries" id="beneficiary1" />
+        <br/>
+        <p>Allocation</p>
+        <input type="text" name="allocations" id="allocation1" />
+        <br/>
+        <p>Beneficiary 2</p>
+        <input type="text" name="beneficiaries" id="beneficiary2" />
+        <br/>
+        <p>Allocation</p>
+        <input type="text" name="allocations" id="allocation2" />
+        <br/>
+        <p>Beneficiary 3</p>
+        <input type="text" name="beneficiaries" id="beneficiary3" />
+        <br/>
+        <p>Allocation</p>
+        <input type="text" name="allocations" id="allocation3" />
+        <br/>
+        <p>Observed By</p>
+        <input type="text" id="observedBy" />
+        <p>Voting start time</p>
+        <input type="number" id="startTime" />
+        <p>Voting end time</p>
+        <input type="number" id="endTime" />      
+        <br/>
+        <br/>
+      <a href="https://www.epochconverter.com/" target="_blank">Tool to calculate start and end time</a>
+        <br/>
+        <br/>
+        <input type="button" id="submitBtn" value="Propose new allocation"/>
+    </form>
+
+    <p id="msg"></p>
+        
+
+    <input type="button" id="retrieveCurrentAllocationBtn" value="Retrieve current allocation plan"/>
+    <br/>
+    <br/>
+
+    <div id="allocationPlanDetails">
+
+    </div>    
+        
+    <input type="button" id="retrieveAllocationProposalBtn" value="Retrieve allocation proposal"/>
+    <br/>
+    <br/>
+    
+    <div id="allocationProposalDetails">
+
+    </div>
+
+    <br/>
+    <br/>
+
+    <input type="button" id="reservoirLevelDetailsBtn" value="Retrieve current reservoir level"/>
+    <br/>
+    <br/>
+
+    <div id="reservoirLevelDetails">
+    </div>
+
+    <input type="button" id="concludeVotingBtn" value="Conclude voting"/>
+    <script> 
+      $(document).ready(function() {
+        $("#welcomeMsg").html("Welcome " + readCookie('usrName') + " (" + readCookie('addr') + " )");
+        $("#allocationProposalDetails").hide();
+        $("#submitBtn").click(function() {
+
+            let beneficiaries = [$("#beneficiary1").val(), $("#beneficiary2").val(), $("#beneficiary3").val()];
+            let fractions = [$("#allocation1").val(), $("#allocation2").val(), $("#allocation3").val()];
+            let mediatedBy = readCookie('addr');
+            let observedBy = $("#observedBy").val();
+            let startTime = $("#startTime").val();
+            let endTime = $("#endTime").val();
+
+            console.log("beneficiaries: " + beneficiaries);
+            console.log("mediatedBy: " + mediatedBy);
+            console.log("observedBy: " + observedBy);
+            console.log("startTime: " + startTime);
+            console.log("endTime: " + endTime);
+
+            $.ajax({
+              url: "/proposeallocation",
+              type: "POST",
+              data: {
+                "beneficiaries": beneficiaries,
+                "fractions": fractions,
+                "mediatedBy": mediatedBy,
+                "observedBy": observedBy,
+                "startTime": startTime, 
+                "endTime": endTime
+              }
+            }).done(function(response) {
+              console.log(response);
+              if(response !== undefined && response['tx'] !== undefined) {
+                let transactionReference = response['tx'];
+                $("#msg").empty().append("New applocation plan proposed successfully with above details.<br/> Transaction reference: " + transactionReference);
+              }
+              else {
+                $("#msg").empty().append("Some error occured and new allocation plan cannot be proposed. Please try again later and contact support if problem persists." + transactionReference);
+              }                
+            });                            
+          });
+      });  
+      
+      $("#retrieveCurrentAllocationBtn").click(function() {
+        $.ajax({
+              url: "/retrieveallocationplan",
+              type: "POST",
+              data: {
+                "fromAccount": readCookie('addr')
+              }
+            }).done(function(response) {
+              console.log(JSON.stringify(response));
+              let displayHtml = '<table><tr><td>Allocation Version</td><td>' + response['version'] + '</td></tr>';
+              for(let i=0; i<response['beneficiaries'].length; ++i) {
+                displayHtml += '<tr><td>Beneficiary ' + parseInt(i + 1).toString() + ': ' + response['beneficiaries'][i] + 
+                  '</td><td>Allocation: ' + response['fractions'][i] + '</td></tr>';
+              }
+              displayHtml += '<tr><td>Proposed Time: ' + new Date(response['proposedTime'] * 1000).toLocaleString() + 
+                '</td><td>Allocation Time: ' + new Date(response['allocationTime'] * 1000).toLocaleString() + '</td></tr>';
+
+              displayHtml += '<tr><td>Observed by: ' + response['observedBy'] + 
+              '</td><td>Mediated by: ' + response['mediatedBy'] + '</td></tr></table>';
+
+              $("#allocationPlanDetails").html(displayHtml);
+              $("#allocationPlanDetails").show();
+            });                            
+        });
+
+        $("#concludeVotingBtn").click(function() {
+        $.ajax({
+              url: "/concludevoting",
+              type: "POST",
+              data: {
+                "fromAccount": readCookie('addr')
+              }
+            }).done(function(response) {
+              if(response !== undefined && response['tx'] !== undefined) {
+                let transactionReference = response['tx'];
+                $("#msg").empty().append("Voting concluded successfully.<br/> Transaction reference: " + transactionReference);
+              }
+              else {
+                $("#msg").empty().append("Some error occured and voting process cannot be concluded at the moment. Please try again later and contact support if problem persists.");
+              }
+              console.log(JSON.stringify(response));
+            });                            
+        });
+
+        $("#retrieveAllocationProposalBtn").click(function() {
+        $.ajax({
+              url: "/retrieveallocationproposal",
+              type: "POST",
+              data: {
+                "fromAccount": readCookie('addr')
+              }
+            }).done(function(response) {
+              console.log(JSON.stringify(response));
+              let displayHtml = '<table><tr><td>Allocation Proposal Version</td><td>' + response['proposalVersion'] + '</td></tr>';
+              for(let i=0; i<response['beneficiaries'].length; ++i) {
+                displayHtml += '<tr><td>Beneficiary ' + parseInt(i + 1).toString() + ': ' + response['beneficiaries'][i] + 
+                  '</td><td>Allocation: ' + response['fractions'][i] + '</td><td> Voted: ' + response['votes'][i] + '</td></tr>';
+              }
+
+              displayHtml += '<tr><td>Mediated By: ' + response['mediatedBy'] + 
+              '</td><td>Observed By: ' +response['observedBy'] + '</td></tr>';
+
+              displayHtml += '<tr><td>Voting Start Time: ' + new Date(response['votingStartTime'] * 1000).toLocaleString() + 
+                '</td><td>Voting End Time: ' + new Date(response['votingEndTime'] * 1000).toLocaleString() + '</td></tr></table>';
+
+              $("#allocationProposalDetails").html(displayHtml);
+              $("#allocationProposalDetails").show();
+            });                            
+        });
+
+        $("#reservoirLevelDetailsBtn").click(function() {
+        $.post({
+              url: "/retrievereservoirlevel",
+              type: "POST",
+              data: {
+                "fromAccount": readCookie('addr')
+              }
+            }).done(function(response) {     
+              console.log(JSON.stringify(response));
+
+              let displayHtml = '<table><tr><td>Version: ' + response['version'] + '</td></tr>';   
+              displayHtml += '<tr><td>Water Level: ' + response['waterLevel'] + 
+              '</td></tr>';
+              displayHtml += '<tr><td>Observed By: ' + response['observedBy'] + 
+              '</td></tr>';
+              displayHtml += '<tr><td>Update Time: ' + new Date(response['observedTime'] * 1000) + 
+              '</td></tr></table>';
+              $("#reservoirLevelDetails").html(displayHtml);
+              $("#reservoirLevelDetails").show();
+              
+            });                            
+        });
+
+        function readCookie(name) {
+          let nameEQ = name + "=";
+          let ca = document.cookie.split(';');
+          for (let i = 0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+          }
+          return null;
+        }
+
+      </script>
+
+</body>
+
+</html>
