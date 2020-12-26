@@ -35,6 +35,18 @@ The reference paper (https://www.sciencedirect.com/science/article/pii/S14747065
 For example, one beneficiary wishes to trade water from their allocated capacity to some other beneficiary for a specified amount of time.
 I think ERC20 token is a possible candidate to implement this protocol. But due to limited time availability I wish to keep this idea for future implementation.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+How to run the project?
+
+1) Install Ganache - https://www.trufflesuite.com/ganache
+2) Install nodejs - https://nodejs.org/en/download/
+3) cd app_server
+4) npm install
+5) npm start
+6) Open http://localhost:3000/welcome
+
+
 
 
 
