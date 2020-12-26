@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=-76dmkNzT8E&feature=youtu.be
 Project background:-
 -----------------------------------------------------
 
-My project work is based on this youtube video https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
+The project work is based on this youtube video https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
 
 Problem scenario:- Conflict among a group of neighbouring countries on sharing water from a reservoir
 Possible solution:- Fractional water allocation and reservoir capacity sharing concepts (For reference take a look at this paper:- https://www.sciencedirect.com/science/article/pii/S1474706507001222)
@@ -18,7 +18,7 @@ Possible solution:- Fractional water allocation and reservoir capacity sharing c
 Project Scope:-
 -----------------------------------------------------
 
-My project is an attempt to implement fractional water allocation protocol on ethereum blockchain. 
+The project is an attempt to implement fractional water allocation protocol on ethereum blockchain. 
 The scope is only limited to simulation of water allocation proposal and voting process.
 
 Main Actors:-
