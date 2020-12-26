@@ -29,7 +29,7 @@ The scope is limited to simulation of water allocation proposal and voting proce
 Main Actors:-
 -----------------------------------------------------
 
-1) Beneficiaries - A countries, states or cities that have rights to utilize the reservoir water
+1) Beneficiaries - Countries, states or cities that have rights to utilize the reservoir water
 2) Mediator - A recongnized organization that could facilitate talks among the beneficiaries and propose water allocation plan
 3) Observer - A recognized organization that attests the allocation plan. Additionally the observer can attest the changes in the reservoir water level.
 4) Admin - An IT organization that helps initialize the contract on ethereum blockchain
