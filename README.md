@@ -14,7 +14,8 @@ The project work is based on this educational youtube video https://www.youtube.
 
 Problem scenario:-
 -----------------------------------------------------
-Conflict among a group of neighbouring countries on sharing water from a reservoir
+Conflict among a group of neighbouring countries on sharing water from a reservoir.
+
 Possible solution:-
 -----------------------------------------------------
 Fractional water allocation and reservoir capacity sharing concepts (For reference take a look at this paper:- https://www.sciencedirect.com/science/article/pii/S1474706507001222)
@@ -22,8 +23,8 @@ Fractional water allocation and reservoir capacity sharing concepts (For referen
 Project Scope:-
 -----------------------------------------------------
 
-The project is an attempt to implement fractional water allocation protocol on ethereum blockchain. 
-The scope is only limited to simulation of water allocation proposal and voting process.
+The project is an attempt to implement (a subset of) fractional water allocation protocol on ethereum blockchain. 
+The scope is limited to simulation of water allocation proposal and voting process.
 
 Main Actors:-
 -----------------------------------------------------
@@ -41,7 +42,7 @@ Steps in Protocol:-
 2) Mediator proposes an allocation percentage for each beneficiary and sets the voting window
 3) During the voting window, the beneficiaries can retrieve the allocation plan and vote if they agree to the proposal
 4) After the voting window, the mediator needs to conclude the voting. If all beneficiaries voted the new allocation plan is adopted
-5) If not all beneficiaries voted in favour of the allocation plan, the protocol begins from Step 2
+5) If not all beneficiaries voted in favour of the allocation plan, the mediator begins from Step 2 at a later point in time
 
 Project Strech:-
 -----------------------------------------------------
@@ -53,7 +54,7 @@ The current version retrieve only the latest reservoir water level, allocation p
 2) Surplus Water Trade Protocol Implementation:-
 
 The reference paper (https://www.sciencedirect.com/science/article/pii/S1474706507001222) also talks about protocol to trade surplus water. 
-For example, one beneficiary wishes to trade water from their allocated capacity to some other beneficiary for a specified amount of time.
+For example, one beneficiary wishes to trade water from their allocated capacity with some other beneficiary for a specified amount of time.
 I think ERC20 token is a possible candidate to implement this protocol. But due to limited time availability I wish to keep this idea for future implementation.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
