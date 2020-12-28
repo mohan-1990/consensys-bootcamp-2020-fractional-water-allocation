@@ -62,10 +62,10 @@ Future Technical Improvements:-
 -----------------------------------------------------
 
 1) contracts/FractionalWaterAllocation.sol can be refactored into the following files for better separation of concerns
-    1) - contracts/Types.sol (to define the contract data structures and state machine variables)
-    2) - contracts/protocols/FWAC.sol (Fractional Water Allocation Protocol)
-    3) - contracts/protocols/SWT.sol (Surplus Water Trade Protocol)
-    4) - contracts/operations/observations.sol (Water level and other operational observations)
+    1) contracts/Types.sol (to define the contract data structures and state machine variables)
+    2) contracts/protocols/FWAC.sol (Fractional Water Allocation Protocol)
+    3) contracts/protocols/SWT.sol (Surplus Water Trade Protocol)
+    4) contracts/operations/observations.sol (Water level and other operational observations)
 
 Steps to run the project:-
 -----------------------------------------------------
