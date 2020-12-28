@@ -57,7 +57,15 @@ The reference paper (https://www.sciencedirect.com/science/article/pii/S14747065
 For example, one beneficiary wishes to trade water from their allocated capacity with some other beneficiary for a specified amount of time.
 I think ERC20 token is a possible candidate to implement this protocol. But due to limited time availability I wish to keep this idea for future implementation.
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Future Technical Improvements:-
+-----------------------------------------------------
+
+contracts/FractionalWaterAllocation.sol can be refactored into the following files for better separation of concerns
+    - contracts/Types.sol (to define the contract data structures and state machine variables)
+    - contracts/protocols/FWAC.sol (Fractional Water Allocation Protocol)
+    - contracts/protocols/SWT.sol (Surplus Water Trade Protocol)
+    - contracts/operations/observations.sol (Water level and other operational observations)
 
 Steps to run the project:-
 -----------------------------------------------------
