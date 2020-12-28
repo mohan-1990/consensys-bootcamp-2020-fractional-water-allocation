@@ -47,9 +47,9 @@ Steps in Protocol:-
 Project Strech:-
 -----------------------------------------------------
 
-1) Feature improvements to Fractional Water Allocation Protocol:-
+1) Improvements to Fractional Water Allocation Protocol:-
 
-The current version retrieve only the latest reservoir water level, allocation proposals and allocation plans. I wish to imrpove the contract to retrieve the full history and display as an interactive histogram on the app interface.
+The current version retrieves only the latest reservoir water level, allocation proposals and allocation plans. I propose an improvement to the contract to retrieve the full history and display as an interactive histogram on the app interface.
 
 2) Surplus Water Trade Protocol Implementation:-
 
