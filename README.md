@@ -67,6 +67,8 @@ Future Technical Improvements:-
     3) contracts/protocols/SWT.sol (Surplus Water Trade Protocol)
     4) contracts/operations/observations.sol (Water level and other operational observations)
 
+2) User experience can be improved by integrating with Metamask wallet rather than login screen
+
 Steps to run the project:-
 -----------------------------------------------------
 
