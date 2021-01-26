@@ -73,7 +73,7 @@ Steps to run the project:-
 -----------------------------------------------------
 
 1) Install Ganache - https://www.trufflesuite.com/ganache
-2) Start Ganache
+2) Start Ganache GUI
 3) Install nodejs - https://nodejs.org/en/download/
 4) Clone this project - git clone https://github.com/linchawk/consensys-bootcamp-2020-fractional-water-allocation.git
 5) cd app_server
