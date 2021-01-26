@@ -18,7 +18,7 @@ Conflict among a group of neighbouring countries on sharing water from a reservo
 
 Possible solution:-
 -----------------------------------------------------
-Fractional water allocation and reservoir capacity sharing concepts (For reference take a look at this paper:- https://www.sciencedirect.com/science/article/pii/S1474706507001222)
+Method discussed around 13 mins mark in the video. Fractional water allocation and reservoir capacity sharing concepts (For additional reference take a look at this paper:- https://www.sciencedirect.com/science/article/pii/S1474706507001222)
 
 Project Scope:-
 -----------------------------------------------------
