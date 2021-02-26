@@ -10,15 +10,10 @@ https://www.youtube.com/watch?v=-76dmkNzT8E&feature=youtu.be
 Project background:-
 -----------------------------------------------------
 
-The project work is based on this educational youtube video https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
+Reference:-
+1) https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
+2) Fractional water allocation and reservoir capacity sharing concepts (https://www.sciencedirect.com/science/article/pii/S1474706507001222)
 
-Problem scenario:-
------------------------------------------------------
-Conflict among a group of neighbouring countries on sharing water from a reservoir.
-
-Possible solution:-
------------------------------------------------------
-Method discussed around 13 mins mark in the video. Fractional water allocation and reservoir capacity sharing concepts (For additional reference take a look at this paper:- https://www.sciencedirect.com/science/article/pii/S1474706507001222)
 
 Project Scope:-
 -----------------------------------------------------
@@ -49,7 +44,7 @@ Project Strech:-
 
 1) Improvements to Fractional Water Allocation Protocol:-
 
-The current version retrieves only the latest reservoir water level, allocation proposals and allocation plans. I propose an improvement to the contract to retrieve the full history and display as an interactive histogram on the app interface.
+The current version retrieves only the latest reservoir water level, allocation proposals and allocation plans. I propose an improvement to the contract to retrieve the full history and display as an interactive histogram on the app user interface.
 
 2) Surplus Water Trade Protocol Implementation:-
 
