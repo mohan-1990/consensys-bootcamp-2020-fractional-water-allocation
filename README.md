@@ -7,13 +7,6 @@ Video demo of the project
 -----------------------------------------------------
 https://www.youtube.com/watch?v=-76dmkNzT8E&feature=youtu.be
 
-Project background:-
------------------------------------------------------
-
-Reference:-
-1) https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
-2) Fractional water allocation and reservoir capacity sharing concepts (https://www.sciencedirect.com/science/article/pii/S1474706507001222)
-
 
 Project Scope:-
 -----------------------------------------------------
@@ -75,6 +68,12 @@ Steps to run the project:-
 6) npm install
 7) npm start
 8) Open http://localhost:3000/welcome
+
+References:-
+-----------------------------------------------------
+
+1) https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
+2) Fractional water allocation and reservoir capacity sharing concepts (https://www.sciencedirect.com/science/article/pii/S1474706507001222)
 
 
 
