@@ -11,7 +11,7 @@ https://www.youtube.com/watch?v=-76dmkNzT8E&feature=youtu.be
 Project Scope:-
 -----------------------------------------------------
 
-The project is an attempt to implement (a subset of) fractional water allocation protocol on ethereum blockchain. 
+The project is an implemention (a subset of) fractional water allocation protocol on ethereum blockchain. 
 The scope is limited to simulation of water allocation proposal and voting process.
 
 Main Actors:-
@@ -32,30 +32,24 @@ Steps in Protocol:-
 4) After the voting window, the mediator needs to conclude the voting. If all beneficiaries voted the new allocation plan is adopted
 5) If not all beneficiaries voted in favour of the allocation plan, the mediator begins from Step 2 at a later point in time
 
-Project Strech:-
+Future Improvements:-
 -----------------------------------------------------
 
-1) Improvements to Fractional Water Allocation Protocol:-
-
-The current version retrieves only the latest reservoir water level, allocation proposals and allocation plans. I propose an improvement to the contract to retrieve the full history and display as an interactive histogram on the app user interface.
+1) Retrieve the full history and display as an interactive histogram on the app user interface.
 
 2) Surplus Water Trade Protocol Implementation:-
 
 The reference paper (https://www.sciencedirect.com/science/article/pii/S1474706507001222) also talks about protocol to trade surplus water. 
 For example, one beneficiary wishes to trade water from their allocated capacity with some other beneficiary for a specified amount of time.
-I think ERC20 token is a possible candidate to implement this protocol. But due to limited time availability I wish to keep this idea for future implementation.
+ERC721 token is a possible candidate to implement this protocol.
 
-
-Future Technical Improvements:-
------------------------------------------------------
-
-1) contracts/FractionalWaterAllocation.sol can be refactored into the following files for better separation of concerns
+3) contracts/FractionalWaterAllocation.sol can be refactored into the following files for better separation of concerns
     1) contracts/Types.sol (to define the contract data structures and state machine variables)
     2) contracts/protocols/FWAC.sol (Fractional Water Allocation Protocol)
     3) contracts/protocols/SWT.sol (Surplus Water Trade Protocol)
     4) contracts/operations/observations.sol (Water level and other operational observations)
 
-2) User experience can be improved by integrating with Metamask wallet rather than login screen
+4) User experience can be improved by integrating with Metamask wallet rather than login screen
 
 Steps to run the project:-
 -----------------------------------------------------
@@ -74,10 +68,3 @@ References:-
 
 1) https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
 2) Fractional water allocation and reservoir capacity sharing concepts (https://www.sciencedirect.com/science/article/pii/S1474706507001222)
-
-
-
-
-
-
-
