@@ -65,6 +65,4 @@ Steps to run the project:-
 
 References:-
 -----------------------------------------------------
-
-1) https://www.youtube.com/watch?v=_BCY0SPOFpE&t=796s.
-2) Fractional water allocation and reservoir capacity sharing concepts (https://www.sciencedirect.com/science/article/pii/S1474706507001222)
+1) Fractional water allocation and reservoir capacity sharing concepts (https://www.sciencedirect.com/science/article/pii/S1474706507001222)
