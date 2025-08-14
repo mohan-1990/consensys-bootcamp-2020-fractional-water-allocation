@@ -11,7 +11,7 @@ https://www.youtube.com/watch?v=-76dmkNzT8E&feature=youtu.be
 Project Scope:-
 -----------------------------------------------------
 
-The project is an implemention (a subset of) fractional water allocation protocol on ethereum blockchain. 
+The project is an implementation (a subset of) fractional water allocation protocol on ethereum blockchain. 
 The scope is limited to simulation of water allocation proposal and voting process.
 
 Main Actors:-
